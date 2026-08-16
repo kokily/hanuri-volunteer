@@ -6,8 +6,7 @@ import { MenuIcon } from "./MenuIcon";
 import clsx from "clsx";
 import { NotVolunteer } from "./NotVolunteer";
 import { Volunteer } from "./Volunteer";
-
-const YEARS = ["2026", "2025", "2024", "2023", "2022", "2021"];
+import { GALLERY_YEARS } from "@/lib/gallery-years";
 
 interface Props {
   list: { label: string; href?: string }[];
@@ -51,21 +50,12 @@ export function MobileNav({ list }: Props) {
                 <hr className="my-8 w-full border-purple-200/30 sm:my-10" />
 
                 <div className="mx-auto w-full max-w-md">
-                  <p
-                    className={clsx(
-                      "text-center text-lg font-semibold tracking-wider uppercase",
-                      "text-purple-200 sm:text-left",
-                    )}
-                  >
+                  <p className="text-center text-lg font-semibold tracking-wider text-purple-200 uppercase sm:text-left">
                     봉사활동
                   </p>
-                  <div
-                    className={clsx(
-                      "mt-4 grid justify-items-center gap-4",
-                      "sm:grid-cols-2 sm:justify-items-start sm:gap-x-8",
-                    )}
-                  >
-                    {YEARS.map((year) => (
+
+                  <div className="mt-4 grid max-h-56 grid-cols-3 gap-2 overflow-y-auto sm:grid-cols-4">
+                    {GALLERY_YEARS.map((year) => (
                       <Volunteer key={year} year={year} close={close} />
                     ))}
                   </div>

@@ -2,10 +2,9 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Icon } from "@/components/common/icon/Icon";
+import { GALLERY_YEARS } from "@/lib/gallery-years";
 import clsx from "clsx";
 import Link from "next/link";
-
-const YEARS = ["2026", "2025", "2024", "2023", "2022", "2021"];
 
 interface Props {
   pathname: string;
@@ -16,7 +15,7 @@ export function Volunteer({ pathname }: Props) {
     <Menu as="div" className="relative">
       {({ open }) => (
         <>
-          <MenuButton className="cursor-pointer outline-none focus:outline-none data-focus:outline-none">
+          <MenuButton className="cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2">
             <div className="group relative p-0.5">
               <span
                 className={clsx(
@@ -46,30 +45,48 @@ export function Volunteer({ pathname }: Props) {
 
           <MenuItems
             className={clsx(
-              "absolute left-1/2 z-20 mt-3 w-screen max-w-xs -translate-x-1/2 p-4",
-              "rounded-2xl border border-gray-50 bg-white shadow-lg",
+              "absolute left-1/2 z-20 mt-3 w-72 -translate-x-1/2 p-3",
+              "rounded-2xl border border-gray-50 bg-white shadow-lg outline-none",
             )}
           >
-            {YEARS.map((year) => (
-              <MenuItem key={year}>
+            <p className="px-2 pb-2 text-xs font-semibold tracking-wide text-purple-400 uppercase">
+              연도 선택
+            </p>
+
+            {/* 연도만 2열 그리드 + 높이 제한 스크롤 */}
+            <div className="grid max-h-64 grid-cols-2 gap-1 overflow-y-auto">
+              {GALLERY_YEARS.map((year) => {
+                const href = `/gallery/${year}`;
+                const active = pathname === href;
+
+                return (
+                  <MenuItem key={year}>
+                    <Link
+                      href={href}
+                      className={clsx(
+                        "rounded-xl px-3 py-2.5 text-center text-sm font-semibold transition",
+                        active
+                          ? "bg-purple-25 text-purple-600"
+                          : "hover:bg-purple-25/60 text-purple-800",
+                      )}
+                    >
+                      {year}년
+                    </Link>
+                  </MenuItem>
+                );
+              })}
+            </div>
+
+            <div className="mt-2 border-t border-purple-100 pt-2">
+              <MenuItem>
                 <Link
-                  href={`/gallery/${year}`}
-                  className={clsx(
-                    "block w-full rounded-xl py-4 sm:p-5",
-                    pathname === `/gallery/${year}`
-                      ? "bg-purple-25"
-                      : "hover:bg-purple-25/60 transition duration-200 ease-in-out",
-                  )}
+                  href={`/gallery/${GALLERY_YEARS[0]}`}
+                  className="hover:bg-purple-25/60 block rounded-xl px-3 py-2 text-center text-sm font-medium text-purple-600"
                 >
-                  <h5 className="text-lg font-semibold text-purple-600">
-                    {year}년
-                  </h5>
-                  <p className="mt-1 text-sm text-purple-800 opacity-90">
-                    하누리 봉사활동
-                  </p>
+                  최근 활동 보기
                 </Link>
               </MenuItem>
-            ))}
+            </div>
           </MenuItems>
         </>
       )}

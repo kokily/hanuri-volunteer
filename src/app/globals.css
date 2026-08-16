@@ -2,6 +2,7 @@
 
 @theme inline {
   --font-sans: var(--font-roboto), sans-serif;
+  --animate-horizontal-bounce: horizontal-bounce 1s infinite;
 
   /* purple */
   --color-purple-900: #160041;
@@ -64,4 +65,16 @@
 
 body {
   @apply bg-white text-purple-900 font-sans antialiased;
+}
+
+@keyframes horizontal-bounce {
+  50% {
+    transform: translateX(25%);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+  0%,
+  100% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
 }
