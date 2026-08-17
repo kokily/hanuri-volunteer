@@ -2,14 +2,18 @@
 
 import { Fragment } from "react";
 import { usePathname } from "next/navigation";
+
+import { AdminTab } from "./AdminTab";
 import { NotVolunteer } from "./NotVolunteer";
 import { Volunteer } from "./Volunteer";
 
 interface Props {
   list: { label: string; href?: string }[];
+  /** 서버에서 넘긴 로그인 여부 */
+  isLoggedIn: boolean;
 }
 
-export function WebNav({ list }: Props) {
+export function WebNav({ list, isLoggedIn }: Props) {
   const pathname = usePathname();
 
   return (
@@ -27,6 +31,8 @@ export function WebNav({ list }: Props) {
           )}
         </Fragment>
       ))}
+
+      {isLoggedIn && <AdminTab pathname={pathname} />}
     </div>
   );
 }

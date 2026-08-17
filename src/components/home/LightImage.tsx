@@ -23,7 +23,11 @@ export function LightImage() {
           </span>
         </div>
 
-        <LightGallery speed={500} selector="figure">
+        <LightGallery
+          speed={500}
+          selector="figure"
+          licenseKey="0000-0000-000-0000"
+        >
           <div className="relative z-10 mt-14 grid grid-cols-12 gap-4 sm:mt-16 sm:gap-6 md:mt-20 lg:mt-24 lg:gap-10 lg:px-4 xl:gap-12 2xl:px-16">
             <div className="col-span-4 flex flex-col md:col-span-2 md:justify-end">
               <GalleryFigure

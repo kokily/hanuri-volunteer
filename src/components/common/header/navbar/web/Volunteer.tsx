@@ -64,10 +64,12 @@ export function Volunteer({ pathname }: Props) {
                     <Link
                       href={href}
                       className={clsx(
-                        "rounded-xl px-3 py-2.5 text-center text-sm font-semibold transition",
+                        "block rounded-xl px-3 py-2.5 text-center text-sm font-semibold transition",
+                        "hover:bg-purple-100 hover:text-purple-600",
+                        "data-focus:bg-purple-100 data-focus:text-purple-600",
                         active
                           ? "bg-purple-25 text-purple-600"
-                          : "hover:bg-purple-25/60 text-purple-800",
+                          : "text-purple-800",
                       )}
                     >
                       {year}년
@@ -81,7 +83,11 @@ export function Volunteer({ pathname }: Props) {
               <MenuItem>
                 <Link
                   href={`/gallery/${GALLERY_YEARS[0]}`}
-                  className="hover:bg-purple-25/60 block rounded-xl px-3 py-2 text-center text-sm font-medium text-purple-600"
+                  className={clsx(
+                    "block rounded-xl px-3 py-2 text-center text-sm font-medium text-purple-600 transition",
+                    "hover:bg-purple-100 hover:text-purple-700",
+                    "data-focus:bg-purple-100 data-focus:text-purple-700",
+                  )}
                 >
                   최근 활동 보기
                 </Link>

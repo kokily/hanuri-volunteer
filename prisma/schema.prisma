@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String        @id @default(uuid())
+  username  String        @unique
+  password  String
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  sessions  AuthSession[]
+}
+
+model Hanuri {
+  id        String   @id @default(uuid())
+  title     String
+  body      String
+  tags      String[]
+  thumbnail String
+  year      String
+  date      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// 기기(브라우저)별 Refresh 세션. 한 유저가 여러 행을 가질 수 있음.
+model AuthSession {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  /// refresh token 원문이 아니라 sha256 해시만 저장
+  tokenHash String    @unique
+  userAgent String?
+  ip        String?
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([userId])
+}

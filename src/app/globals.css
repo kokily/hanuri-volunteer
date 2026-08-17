@@ -3,6 +3,8 @@
 @theme inline {
   --font-sans: var(--font-roboto), sans-serif;
   --animate-horizontal-bounce: horizontal-bounce 1s infinite;
+  --scale-135: 1.35;
+  --scale-80: 0.8;
 
   /* purple */
   --color-purple-900: #160041;
@@ -40,31 +42,31 @@
 
   --radius-4xl: 2.5rem;
   --radius-5xl: 5rem;
-  
+
   --leading-tighter: 1.1;
   --leading-loose: 1.875;
 }
 
 @layer utilities {
   .h1 {
-    @apply text-5xl font-extrabold leading-snug sm:text-6xl xl:text-7xl sm:leading-tight xl:leading-tighter;
+    @apply xl:leading-tighter text-5xl leading-snug font-extrabold sm:text-6xl sm:leading-tight xl:text-7xl;
   }
 
   .h2 {
-    @apply text-4xl font-bold leading-tight tracking-tight sm:text-5xl xl:text-6xl sm:leading-tighter;
+    @apply sm:leading-tighter text-4xl leading-tight font-bold tracking-tight sm:text-5xl xl:text-6xl;
   }
 
   .h3 {
-    @apply text-3xl font-bold leading-tight tracking-tight sm:text-4xl sm:leading-tighter;
+    @apply sm:leading-tighter text-3xl leading-tight font-bold tracking-tight sm:text-4xl;
   }
 
   .h4 {
-    @apply text-2xl font-bold leading-tight tracking-tight sm:text-3xl sm:leading-tighter;
+    @apply sm:leading-tighter text-2xl leading-tight font-bold tracking-tight sm:text-3xl;
   }
 }
 
 body {
-  @apply bg-white text-purple-900 font-sans antialiased;
+  @apply bg-white font-sans text-purple-900 antialiased;
 }
 
 @keyframes horizontal-bounce {

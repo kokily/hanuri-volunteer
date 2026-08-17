@@ -35,7 +35,7 @@ export function Contact() {
                 alt="하누리봉사회"
                 width={240}
                 height={80}
-                className="h-auto w-full"
+                className="h-auto w-auto"
                 priority
               />
             </Link>
