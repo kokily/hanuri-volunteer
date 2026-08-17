@@ -1,0 +1,36 @@
+.hanuri-quill .ql-toolbar.ql-snow {
+  border: 1px solid rgb(210 198 250); /* purple-200 */
+  border-radius: 1rem 1rem 0 0;
+  background: rgb(244 240 252); /* purple-25 */
+}
+
+.hanuri-quill .ql-container.ql-snow {
+  border: 1px solid rgb(210 198 250);
+  border-top: 0;
+  border-radius: 0 0 1rem 1rem;
+  min-height: 280px;
+  font-size: 1.125rem;
+  color: rgb(24 8 58); /* purple-800 */
+}
+
+.hanuri-quill .ql-editor {
+  min-height: 280px;
+}
+
+.hanuri-quill .ql-editor.ql-blank::before {
+  color: rgb(124 122 196);
+  font-style: normal;
+}
+
+.hanuri-quill .ql-snow .ql-stroke {
+  stroke: rgb(73 71 159);
+}
+
+.hanuri-quill .ql-snow .ql-fill {
+  fill: rgb(73 71 159);
+}
+
+.hanuri-quill .ql-snow.ql-toolbar button:hover,
+.hanuri-quill .ql-snow .ql-toolbar button:hover {
+  color: rgb(73 71 159);
+}
