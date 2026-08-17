@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto_Flex } from "next/font/google";
+import Script from "next/script";
 import { Header } from "@/components/common/header/Header";
 import { Footer } from "@/components/common/footer/Footer";
 import "./globals.css";
@@ -16,6 +17,12 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
+  verification: {
+    google: "QoZXLZcWfX7rpZHByrLzV6-rZho8EjuJ97ChM3AtM6c",
+    other: {
+      "naver-site-verification": "cba244e2a17e3202fdefcc52e4a367ba48a526a0",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -34,6 +41,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BKE2LHPQG3"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BKE2LHPQG3');
+          `}
+        </Script>
       </body>
     </html>
   );
